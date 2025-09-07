@@ -1,0 +1,122 @@
+create, insert and basic select clause--
+
+1--
+create table vehicle
+(
+vid int,
+vname varchar(20),
+price varchar(20),
+discount int,
+milage int,
+details varchar(50)
+);
+
+insert into vehicle values
+(1,'Activa', 80000, 10, 35, 'Two wheeler.Sturdy.Milage 30km'),
+(2,'Santro', 95000, 20, 20, 'Product of Hyundai'),
+(3, 'Yamaha', 16000, 5, 70, 'Sturdy and good milage'),
+(4, 'I-10', 30000, 8, 18, 'Good small car'),
+(5, 'Wagon R', 250000, 10, 25, 'good milage car'),
+(6, 'Hero Splendor', 75000, 9, 65, 'Best bike'),
+(7, 'Royal Enfield', 190000, 5, 40, 'a royal bike');
+
+create table customer
+(
+custid int,
+ename varchar(30),
+location varchar(20)
+);
+
+insert into customer values
+(1, 'Nilima', 'Pimpri'),
+(2, 'Ganesh', 'Pune'),
+(3, 'kishor', 'kothrud'),
+(4, 'priya', 'Aundh');
+
+create table salesman
+(
+sid int,
+sname varchar(20),
+city varchar(20),
+experience int
+);
+
+insert into salesman values
+(10, 'Rajesh', 'Mumbai', 5),
+(11, 'Seema', 'Pune', 8),
+(12, 'Shailesh', 'Nagpur', 7),
+(13, 'Rakhi', 'Pune', 2);
+
+2--Display names of salesmen who work in Pune.
+select * from salesman 
+where city = 'Pune';
+
+3--Add some new customers
+insert into customer values
+(5, 'Geeta', 'Pimpri'),
+(6, 'Raj', 'Aundh'),
+(7, 'Yash', 'Aundh');
+
+4--Display information of vehicle, Royal Enfild
+select * from vehicle
+where vname = 'Royal Enfield';
+
+5--Display information of all Bikes
+select * from vehicle
+where
+
+6--Display information of vehicle i 10
+select * from vehicle
+where vname = 'I-10';
+
+7--Display vid, vname, price, details and total price for each vehicle.
+total price price - discount,
+
+select vid, vname, price, details, discount,  price - discount as total_price
+from vehicle;
+
+8--Display all vehicles whose price is less than 100000
+select * from vehicle
+where price < 100000;
+
+9--Display all the information of salesmen having experience more than 5 years.
+select * from salesman
+where experience > 5;
+
+10--For the given schema, create the table and solve following queries employee(eno,ename, basic, incentives).
+create table employee
+(
+eno int,
+ename varchar(20),
+basic int,
+incentive int
+);
+
+insert into employee values
+(1, 'Rajesh', 20000, 1500),
+(2, 'Sarita', 25000, 1000),
+(3, 'Meera', 15000, 3000),
+(4, 'Jitesh', 30000, 500),
+(5, 'Ramesh', 12000, 3000);
+
+11--Increase the salary of all employees earning less than 20000 basic by 5%.
+update employee
+set basic = basic * 1.05
+where basic < 20000;
+
+12--New employee Ajay joins the firm. His eno is 20, basic is 16000 and he is not eligible for incentivies, Store this information in table.
+
+insert into employee values
+(20, 'Ajay', 16000, null);
+
+13--Delete customer from area Aundh whose name is Priya.
+delete from customer 
+where ename = 'priya' or location = 'Aundh';
+
+14--If buying price of the vehicle is 76000 then change it to 80000.
+update vehicle
+set price = 80000
+where price = 75000;
+
+15--Delete entire table Salesmanl.
+drop table salesman1
